@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d18"><title>ZAIN AI Trading Terminal</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div id="loginScreen" class="login-wrap">
+  <form id="loginForm" class="login-card">
+    <div class="brand-mark">Z</div><p class="eyebrow">ZAIN.NET • MARKET INTELLIGENCE</p>
+    <h1>ZAIN AI <span>TRADING TERMINAL</span></h1>
+    <p class="muted">Masuk menggunakan akun Supabase yang telah diizinkan.</p>
+    <label>Email<input id="email" type="email" autocomplete="username" required placeholder="email@anda.com"></label>
+    <label>Password<input id="password" type="password" autocomplete="current-password" required placeholder="Password"></label>
+    <button class="primary wide" type="submit">Masuk ke Terminal</button>
+    <p id="loginError" class="error"></p>
+  </form>
+</div>
+<div id="app" class="app hidden">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark small">Z</div><div><b>ZAIN AI</b><small>TRADING TERMINAL</small></div></div>
+    <nav><a class="active" href="#overview">▦ <span>Overview</span></a><a href="#watchlist">◈ <span>Market Watch</span></a><a href="#signals">⌁ <span>AI Signals</span></a><a href="#history">◷ <span>Riwayat</span></a></nav>
+    <div class="side-bottom"><span class="live-dot"></span> Binance public market data <button id="logoutBtn" class="logout">Keluar ↗</button></div>
+  </aside>
+  <main class="main" id="overview">
+    <header><div><p class="eyebrow">CRYPTO • INTRADAY 15M–4H</p><h2>Market Overview</h2><p class="muted">Pemantauan pasar dan hasil analisis AI.</p></div><div class="header-right"><span id="clock">--:--:--</span><span class="pill"><i class="live-dot"></i> LIVE MARKET</span></div></header>
+    <section class="stats">
+      <article class="stat"><span>Total sinyal</span><strong id="totalSignals">—</strong><small>Data tersimpan</small></article>
+      <article class="stat"><span>BUY terbaru</span><strong id="buyCount">—</strong><small>Rekomendasi AI</small></article>
+      <article class="stat"><span>SELL terbaru</span><strong id="sellCount">—</strong><small>Rekomendasi AI</small></article>
+      <article class="stat"><span>Menunggu / gagal</span><strong id="pendingCount">—</strong><small>Status pemrosesan</small></article>
+    </section>
+    <section id="watchlist" class="panel"><div class="section-head"><div><h3>Market Watch</h3><p class="muted">Harga spot Binance • pembaruan berkala</p></div><button id="refreshBtn" class="ghost">↻ Perbarui</button></div><div id="marketGrid" class="market-grid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div></section>
+    <section id="signals" class="panel"><div class="section-head"><div><h3>Sinyal AI Terbaru</h3><p class="muted">Sinyal yang telah disimpan di Supabase</p></div><span id="updatedAt" class="muted tiny">Belum diperbarui</span></div><div class="table-wrap"><table><thead><tr><th>Pair</th><th>TF</th><th>Rekomendasi</th><th>Harga sinyal</th><th>Confidence</th><th>Status</th><th>Waktu</th></tr></thead><tbody id="signalRows"><tr><td colspan="7" class="empty">Memuat data…</td></tr></tbody></table></div></section>
+    <section id="history" class="panel"><div class="section-head"><div><h3>Riwayat Analisis</h3><p class="muted">Catatan analisis sebelumnya</p></div><select id="historyFilter"><option value="ALL">Semua status</option><option value="ANALYZED">ANALYZED</option><option value="PENDING">PENDING</option><option value="FAILED">FAILED</option></select></div><div id="historyList" class="history-list"><p class="empty">Memuat riwayat…</p></div></section>
+    <footer>© ZAIN.NET • Alat bantu analisis, bukan jaminan keuntungan. Periksa risiko sebelum mengambil keputusan.</footer>
+  </main>
+</div>
+<script src="config.js"></script><script src="app.js"></script>
+</body></html>
